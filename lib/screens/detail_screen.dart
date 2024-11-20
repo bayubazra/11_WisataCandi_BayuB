@@ -12,7 +12,6 @@ class DetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            //image Header
             Stack(
               children: [
                 Padding(
@@ -27,21 +26,24 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                //Tombol Back Custom
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.deepPurple[100]?.withOpacity(0.8),
-                        shape: BoxShape.circle),
+                      color: Colors.deepPurple[100]?.withOpacity(0.8),
+                      shape: BoxShape.circle,
+                    ),
                     child: IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.arrow_back)),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.arrow_back),
+                    ),
                   ),
                 ),
               ],
             ),
-            //Detail Info
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
@@ -61,9 +63,7 @@ class DetailScreen extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {},
-                        icon: const Icon(
-                          Icons.favorite_border,
-                        ),
+                        icon: const Icon(Icons.favorite_border),
                       )
                     ],
                   ),
@@ -74,7 +74,9 @@ class DetailScreen extends StatelessWidget {
                         Icons.place,
                         color: Colors.red,
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(
+                        width: 8,
+                      ),
                       const SizedBox(
                         width: 70,
                         child: Text(
@@ -82,7 +84,7 @@ class DetailScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Text(': ${candi.location}')
+                      Text(':${candi.location}')
                     ],
                   ),
                   Row(
@@ -91,7 +93,9 @@ class DetailScreen extends StatelessWidget {
                         Icons.calendar_month,
                         color: Colors.green,
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(
+                        width: 8,
+                      ),
                       const SizedBox(
                         width: 70,
                         child: Text(
@@ -99,7 +103,7 @@ class DetailScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Text(': ${candi.built}')
+                      Text(':${candi.built}')
                     ],
                   ),
                   Row(
@@ -108,7 +112,9 @@ class DetailScreen extends StatelessWidget {
                         Icons.house,
                         color: Colors.amber,
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(
+                        width: 8,
+                      ),
                       const SizedBox(
                         width: 70,
                         child: Text(
@@ -116,7 +122,7 @@ class DetailScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Text(': ${candi.type}')
+                      Text(':${candi.type}')
                     ],
                   ),
                   const SizedBox(
@@ -128,7 +134,7 @@ class DetailScreen extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  //Info bawah
+                  //info bawah
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -144,10 +150,10 @@ class DetailScreen extends StatelessWidget {
                       ),
                       SizedBox(
                         child: Text(candi.description),
-                      )
+                      ),
                     ],
                   ),
-                  //info gallery
+                  //info galery
                   Padding(
                     padding: const EdgeInsets.all(15),
                     child: Column(
@@ -159,9 +165,11 @@ class DetailScreen extends StatelessWidget {
                         const Text(
                           'Galeri',
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         SizedBox(
@@ -183,36 +191,38 @@ class DetailScreen extends StatelessWidget {
                                       ),
                                     ),
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: CachedNetworkImage(
-                                        imageUrl: candi.imageUrls[index],
-                                        width: 120,
-                                        height: 120,
-                                        fit: BoxFit.cover,
-                                        placeholder: (context, url) =>
-                                            Container(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: CachedNetworkImage(
+                                          imageUrl: candi.imageUrls[index],
                                           width: 120,
                                           height: 120,
-                                          color: Colors.deepPurple[50],
-                                        ),
-                                        errorWidget: (context, url, error) =>
-                                            const Icon(
-                                          Icons.error,
-                                        ),
-                                      ),
-                                    ),
+                                          fit: BoxFit.cover,
+                                          placeholder: (context, url) =>
+                                              Container(
+                                            width: 120,
+                                            height: 120,
+                                            color: Colors.deepPurple[50],
+                                          ),
+                                          errorWidget: (context, url, error) =>
+                                              const Icon(
+                                            Icons.error,
+                                          ),
+                                        )),
                                   ),
                                 ),
                               );
                             },
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 4,
                         ),
-                        Text(
+                        const Text(
                           'Tap untuk memperbesar',
-                          style: TextStyle(fontSize: 12, color: Colors.black54),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black54,
+                          ),
                         ),
                       ],
                     ),

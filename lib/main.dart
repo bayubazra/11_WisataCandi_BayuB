@@ -8,19 +8,16 @@ import 'package:wisata_candi/screens/sign_in_screen.dart';
 import 'package:wisata_candi/screens/sign_up_screen.dart';
 
 void main() {
-  runApp(MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (Context) => Home(),
-        '/home': (Context) => Home(),
-        '/login': (Context) => SignInScreen(),
-        '/register': (Context) => SignUpScreen(),
-        '/search': (Context) => SearchScreen(),
-        '/profile': (Context) => const ProfileScreen(),
-      }
-  ));
+  runApp(MaterialApp(initialRoute: '/', routes: {
+    '/': (Context) => Home(),
+    '/home': (Context) => Home(),
+    '/login': (Context) => SignInScreen(),
+    '/register': (Context) => SignUpScreen(),
+    '/search': (Context) => SearchScreen(),
+    '/profile': (Context) => const ProfileScreen(),
+    '/homescreen': (Context) => HomeScreen(),
+  }));
 }
-
 
 class Home extends StatefulWidget {
   @override
@@ -42,7 +39,6 @@ class _Home extends State<Home> {
     ];
   }
 
-
   @override
   Widget build(BuildContext context) {
     void _onItemTapped(int index) {
@@ -59,12 +55,15 @@ class _Home extends State<Home> {
             //Navigator.pushNamed(context, "/profile");
             break;
           default:
-            //Navigator.pushNamed(context, "/home");
+          //Navigator.pushNamed(context, "/home");
         }
       });
     }
+
     return Scaffold(
-      body: _pages.isNotEmpty ? _pages[_selectedIndex] : const Center(child: CircularProgressIndicator()),
+      body: _pages.isNotEmpty
+          ? _pages[_selectedIndex]
+          : const Center(child: CircularProgressIndicator()),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -89,7 +88,6 @@ class _Home extends State<Home> {
   }
 }
 
-
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
@@ -106,8 +104,10 @@ class MainApp extends StatelessWidget {
             color: Colors.deepPurple,
             fontSize: 20,
             fontWeight: FontWeight.bold,
-          ),),
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(
+          ),
+        ),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(
           primary: Colors.deepPurple,
           surface: Colors.deepPurple[50],
         ),

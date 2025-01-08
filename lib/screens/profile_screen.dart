@@ -10,8 +10,8 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreen extends State<ProfileScreen> {
   bool isSigned = false;
-  String userName = 'Bay';
-  String fullName = 'BayBay';
+  String userName = 'Name';
+  String fullName = 'NameL';
   int favoriteCandiCount = 0;
 
   // TODO: 5 func sign in.
